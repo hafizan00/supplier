@@ -34,7 +34,7 @@ class InitCommand extends Command
             ],
             [
                 'permission'    => 'permission:create-role',
-                'name'          => 'affiliate',
+                'name'          => 'entrepreneur',
                 'guard'         => 'web',
                 'permissions'   => 'create articles|edit articles',
             ],
