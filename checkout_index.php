@@ -31,9 +31,9 @@ $products = join_product_table();
 												</ul>
 										</div>
 										<div class="part-2">
-												<h3 class="product-title">Here Product Title</h3>
-												<h4 class="product-old-price">$79.99</h4>
-												<h4 class="product-price">$49.99</h4>
+												<h3 class="product-title">Makanan</h3>
+												<h4 class="product-old-price">Rm79.99</h4>
+												<h4 class="product-price">Rm49.99</h4>
 										</div>
 								</div>
 						</div>
@@ -50,8 +50,8 @@ $products = join_product_table();
 												</ul>
 										</div>
 										<div class="part-2">
-												<h3 class="product-title">Here Product Title</h3>
-												<h4 class="product-price">$49.99</h4>
+												<h3 class="product-title">Buku</h3>
+												<h4 class="product-price">Rm49.99</h4>
 										</div>
 								</div>
 						</div>
@@ -67,9 +67,9 @@ $products = join_product_table();
 												</ul>
 										</div>
 										<div class="part-2">
-												<h3 class="product-title">Here Product Title</h3>
-												<h4 class="product-old-price">$79.99</h4>
-												<h4 class="product-price">$49.99</h4>
+												<h3 class="product-title">Bag</h3>
+												<h4 class="product-old-price">Rm79.99</h4>
+												<h4 class="product-price">Rm49.99</h4>
 										</div>
 								</div>
 						</div>
@@ -86,14 +86,14 @@ $products = join_product_table();
 												</ul>
 										</div>
 										<div class="part-2">
-												<h3 class="product-title">Here Product Title</h3>
-												<h4 class="product-price">$49.99</h4>
+												<h3 class="product-title">Game</h3>
+												<h4 class="product-price">Rm49.99</h4>
 										</div>
 								</div>
 						</div>
 						<!-- Single Product -->
 						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-1" class="single-product">
+								<div id="product-5" class="single-product">
 										<div class="part-1">
 												<ul>
 														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
@@ -103,15 +103,15 @@ $products = join_product_table();
 												</ul>
 										</div>
 										<div class="part-2">
-												<h3 class="product-title">Here Product Title</h3>
-												<h4 class="product-old-price">$79.99</h4>
-												<h4 class="product-price">$49.99</h4>
+												<h3 class="product-title">Wallet Product</h3>
+												<h4 class="product-old-price">Rm79.99</h4>
+												<h4 class="product-price">Rm49.99</h4>
 										</div>
 								</div>
 						</div>
 						<!-- Single Product -->
 						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-2" class="single-product">
+								<div id="product-6" class="single-product">
 										<div class="part-1">
 												<span class="discount">15% off</span>
 												<ul>
@@ -122,14 +122,14 @@ $products = join_product_table();
 												</ul>
 										</div>
 										<div class="part-2">
-												<h3 class="product-title">Here Product Title</h3>
-												<h4 class="product-price">$49.99</h4>
+												<h3 class="product-title">Kasut</h3>
+												<h4 class="product-price">Rm49.99</h4>
 										</div>
 								</div>
 						</div>
 						<!-- Single Product -->
 						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-3" class="single-product">
+								<div id="product-7" class="single-product">
 										<div class="part-1">
 												<ul>
 														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
@@ -139,15 +139,15 @@ $products = join_product_table();
 												</ul>
 										</div>
 										<div class="part-2">
-												<h3 class="product-title">Here Product Title</h3>
-												<h4 class="product-old-price">$79.99</h4>
-												<h4 class="product-price">$49.99</h4>
+												<h3 class="product-title">Lampu</h3>
+												<h4 class="product-old-price">Rm79.99</h4>
+												<h4 class="product-price">Rm49.99</h4>
 										</div>
 								</div>
 						</div>
 						<!-- Single Product -->
 						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-4" class="single-product">
+								<div id="product-8" class="single-product">
 										<div class="part-1">
 												<span class="new">new</span>
 												<ul>
@@ -158,13 +158,13 @@ $products = join_product_table();
 												</ul>
 										</div>
 										<div class="part-2">
-												<h3 class="product-title">Here Product Title</h3>
-												<h4 class="product-price">$49.99</h4>
+												<h3 class="product-title">Tilam</h3>
+												<h4 class="product-price">Rm49.99</h4>
 										</div>
 								</div>
 						</div>
 						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-4" class="single-product">
+								<div id="product-9" class="single-product">
 										<div class="part-1">
 												<span class="new">new</span>
 												<ul>
@@ -175,8 +175,8 @@ $products = join_product_table();
 												</ul>
 										</div>
 										<div class="part-2">
-												<h3 class="product-title">Here Product Title</h3>
-												<h4 class="product-price">$49.99</h4>
+												<h3 class="product-title">Jam</h3>
+												<h4 class="product-price">Rm49.99</h4>
 										</div>
 								</div>
 						</div>
@@ -248,23 +248,43 @@ a:hover {
 }
 
 .section-products #product-1 .part-1::before {
-    background: url("https://i.ibb.co/L8Nrb7p/1.jpg") no-repeat center;
+    background: url("images/makanan.jpeg")no-repeat center;
     background-size: cover;
 		transition: all 0.3s;
 }
 
 .section-products #product-2 .part-1::before {
-    background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
+    background: url("images/buku.jpeg") no-repeat center;
     background-size: cover;
 }
 
 .section-products #product-3 .part-1::before {
-    background: url("https://i.ibb.co/L8Nrb7p/1.jpg") no-repeat center;
+    background: url("images/bag.webp") no-repeat center;
     background-size: cover;
 }
 
 .section-products #product-4 .part-1::before {
-    background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
+    background: url("images/game.webp") no-repeat center;
+    background-size: cover;
+}
+.section-products #product-5 .part-1::before {
+    background: url("images/wallet.jpg") no-repeat center;
+    background-size: cover;
+}
+.section-products #product-6 .part-1::before {
+    background: url("images/kasut.jpeg") no-repeat center;
+    background-size: cover;
+}
+.section-products #product-7 .part-1::before {
+    background: url("images/lampu.jpeg") no-repeat center;
+    background-size: cover;
+}
+.section-products #product-8 .part-1::before {
+    background: url("images/tilam.jpg") no-repeat center;
+    background-size: cover;
+}
+.section-products #product-9 .part-1::before {
+    background: url("images/jam.jpg") no-repeat center;
     background-size: cover;
 }
 

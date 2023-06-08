@@ -52,4 +52,10 @@
       <span>Payment</span>
     </a>
   </li>
+  <li>
+    <a href="checkout_index.php" class="submenu-toggle">
+      <i class="glyphicon glyphicon-th-list"></i>
+      <span>Checkout</span>
+    </a>
+  </li>
 </ul>
