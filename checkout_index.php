@@ -23,16 +23,17 @@ $all_categories = find_all('categories');
 				<!-- Single Product -->
 				<?php foreach ($products as $product) : ?>
 					<div class="col-md-6 col-lg-4 col-xl-3">
-						<div id="product-1" class="single-product">
+						<?php echo remove_junk($product['categorie']); ?>
+						<div id="product-<?php echo remove_junk($product['id']); ?>" class="single-product">
 							<div class="part-1">
 								<ul>
-									<li><a href="#"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+									<li><a href="show_product.php?id=<?php echo remove_junk($product['id']); ?>"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
 								</ul>
 							</div>
 							<div class="part-2">
-								<h3 class="product-title">Makanan</h3>
-								<h4 class="product-old-price">Rm79.99</h4>
-								<h4 class="product-price">Rm49.99</h4>
+								<h3 class="product-title"><?php echo remove_junk($product['name']); ?></h3>
+								<h4 class="product-old-price">Rm<?php echo remove_junk($product['sale_price']); ?></h4>
+								<h4 class="product-price">Rm<?php echo remove_junk($product['buy_price']); ?></h4>
 							</div>
 						</div>
 					</div>
