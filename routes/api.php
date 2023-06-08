@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Orion\Facades\Orion;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/pijan', fn () => response(['name' => 'Hafizan']));
+
+Route::group(['as' => 'api.'], function() {
+    Orion::resource('posts', App\Http\Controllers\Api\PostsController::class);
+});
 
 Route::middleware(['auth:sanctum'])->group(function() {
 

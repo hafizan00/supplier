@@ -4,17 +4,35 @@ models:
     content: longtext
     published_at: nullable timestamp
 
+  Product:
+    name: string:255
+    description: longtext
+    published_at: nullable timestamp
+
 controllers:
   Post:
     index:
-      query: all
+      query: all:posts
       render: post.index with:posts
-
+    create:
+      render: post.create
     store:
-      validate: title, content
+      validate: post
       save: post
-      send: ReviewNotification to:post.author with:post
-      dispatch: SyncMedia with:post
-      fire: NewPost with:post
-      flash: post.title
+      flash: post.id
       redirect: post.index
+    show:
+      render: post.show with:post
+    edit:
+      render: post.edit with:post
+    update:
+      validate: post
+      update: post
+      flash: post.id
+      redirect: post.index
+    destroy:
+      delete: post
+      redirect: post.index
+
+  Product:
+    resource

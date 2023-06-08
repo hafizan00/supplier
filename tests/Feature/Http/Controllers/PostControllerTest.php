@@ -2,15 +2,9 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Events\NewPost;
-use App\Jobs\SyncMedia;
 use App\Models\Post;
-use App\Notification\ReviewNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Queue;
 use JMac\Testing\Traits\AdditionalAssertions;
 use Tests\TestCase;
 
@@ -39,6 +33,18 @@ class PostControllerTest extends TestCase
     /**
      * @test
      */
+    public function create_displays_view(): void
+    {
+        $response = $this->get(route('post.create'));
+
+        $response->assertOk();
+        $response->assertViewIs('post.create');
+    }
+
+
+    /**
+     * @test
+     */
     public function store_uses_form_request_validation(): void
     {
         $this->assertActionUsesFormRequest(
@@ -56,10 +62,6 @@ class PostControllerTest extends TestCase
         $title = $this->faker->sentence(4);
         $content = $this->faker->paragraphs(3, true);
 
-        Notification::fake();
-        Queue::fake();
-        Event::fake();
-
         $response = $this->post(route('post.store'), [
             'title' => $title,
             'content' => $content,
@@ -73,16 +75,87 @@ class PostControllerTest extends TestCase
         $post = $posts->first();
 
         $response->assertRedirect(route('post.index'));
-        $response->assertSessionHas('post.title', $post->title);
+        $response->assertSessionHas('post.id', $post->id);
+    }
 
-        Notification::assertSentTo($post->author, ReviewNotification::class, function ($notification) use ($post) {
-            return $notification->post->is($post);
-        });
-        Queue::assertPushed(SyncMedia::class, function ($job) use ($post) {
-            return $job->post->is($post);
-        });
-        Event::assertDispatched(NewPost::class, function ($event) use ($post) {
-            return $event->post->is($post);
-        });
+
+    /**
+     * @test
+     */
+    public function show_displays_view(): void
+    {
+        $post = Post::factory()->create();
+
+        $response = $this->get(route('post.show', $post));
+
+        $response->assertOk();
+        $response->assertViewIs('post.show');
+        $response->assertViewHas('post');
+    }
+
+
+    /**
+     * @test
+     */
+    public function edit_displays_view(): void
+    {
+        $post = Post::factory()->create();
+
+        $response = $this->get(route('post.edit', $post));
+
+        $response->assertOk();
+        $response->assertViewIs('post.edit');
+        $response->assertViewHas('post');
+    }
+
+
+    /**
+     * @test
+     */
+    public function update_uses_form_request_validation(): void
+    {
+        $this->assertActionUsesFormRequest(
+            \App\Http\Controllers\PostController::class,
+            'update',
+            \App\Http\Requests\PostUpdateRequest::class
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function update_redirects(): void
+    {
+        $post = Post::factory()->create();
+        $title = $this->faker->sentence(4);
+        $content = $this->faker->paragraphs(3, true);
+
+        $response = $this->put(route('post.update', $post), [
+            'title' => $title,
+            'content' => $content,
+        ]);
+
+        $post->refresh();
+
+        $response->assertRedirect(route('post.index'));
+        $response->assertSessionHas('post.id', $post->id);
+
+        $this->assertEquals($title, $post->title);
+        $this->assertEquals($content, $post->content);
+    }
+
+
+    /**
+     * @test
+     */
+    public function destroy_deletes_and_redirects(): void
+    {
+        $post = Post::factory()->create();
+
+        $response = $this->delete(route('post.destroy', $post));
+
+        $response->assertRedirect(route('post.index'));
+
+        $this->assertModelMissing($post);
     }
 }
