@@ -1,6 +1,8 @@
 <?php
 $page_title = 'View product';
 require_once('includes/load.php');
+include_once('checkout.style.php');
+
 // Checkin What level user has permission to view this page
 //    page_require_level(2);
 ?>
@@ -59,45 +61,19 @@ if (isset($_POST['product'])) {
         <div class="panel-heading">
             <strong>
                 <span class="glyphicon glyphicon-th"></span>
-                <span>Add New Product</span>
+                <span>Product Detail</span>
             </strong>
         </div>
+
+        <div id="product-<?php echo remove_junk($product['id']); ?>" class="jumbotron single-product">
+            <h1><?php echo remove_junk($product['name']); ?></h1>
+            <h5>Rm<?php echo remove_junk($product['sale_price']); ?></h5>
+            <p>Rm<?php echo remove_junk($product['buy_price']); ?></p>
+        </div>
+
         <div class="panel-body">
             <div class="col-md-7">
                 <form method="post" action="checkout_product.php?id=<?php echo (int)$product['id'] ?>">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-th-large"></i>
-                            </span>
-                            <input type="text" class="form-control" name="product-title" value="<?php echo remove_junk($product['name']); ?>">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <select class="form-control" name="product-categorie">
-                                    <option value=""> Select a categorie</option>
-                                    <?php foreach ($all_categories as $cat) : ?>
-                                        <option value="<?php echo (int)$cat['id']; ?>" <?php if ($product['categorie_id'] === $cat['id']) : echo "selected";
-                                                                                        endif; ?>>
-                                            <?php echo remove_junk($cat['name']); ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <select class="form-control" name="product-photo">
-                                    <option value=""> No image</option>
-                                    <?php foreach ($all_photo as $photo) : ?>
-                                        <option value="<?php echo (int)$photo['id']; ?>" <?php if ($product['media_id'] === $photo['id']) : echo "selected";
-                                                                                        endif; ?>>
-                                            <?php echo $photo['file_name'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-4">
@@ -137,7 +113,7 @@ if (isset($_POST['product'])) {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" name="product" class="btn btn-danger">Update</button>
+                    <button type="submit" name="product" class="btn btn-primary">Purchase</button>
                 </form>
             </div>
         </div>
