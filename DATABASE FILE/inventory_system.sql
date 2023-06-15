@@ -78,15 +78,15 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `quantity`, `buy_price`, `sale_price`, `categorie_id`, `media_id`, `date`) VALUES
-(1, 'Demo Product', '48', '100.00', '500.00', 1, 0, '2021-04-04 16:45:51'),
-(2, 'Box Varieties', '12000', '55.00', '130.00', 4, 0, '2021-04-04 18:44:52'),
-(3, 'Wheat', '69', '2.00', '5.00', 2, 0, '2021-04-04 18:48:53'),
-(4, 'Timber', '1200', '780.00', '1069.00', 2, 0, '2021-04-04 19:03:23'),
-(5, 'W1848 Oscillating Floor Drill Press', '26', '299.00', '494.00', 5, 0, '2021-04-04 19:11:30'),
-(6, 'Portable Band Saw XBP02Z', '42', '280.00', '415.00', 5, 0, '2021-04-04 19:13:35'),
-(7, 'Life Breakfast Cereal-3 Pk', '107', '3.00', '7.00', 3, 0, '2021-04-04 19:15:38'),
-(8, 'Chicken of the Sea Sardines W', '110', '13.00', '20.00', 3, 0, '2021-04-04 19:17:11'),
-(9, 'Disney Woody - Action Figure', '67', '29.00', '55.00', 3, 0, '2021-04-04 19:19:20'),
+(1, 'Shawarma Kebab', '48', '100.00', '500.00', 1, 0, '2021-04-04 16:45:51'),
+(2, 'Preloved Books', '12000', '55.00', '130.00', 4, 0, '2021-04-04 18:44:52'),
+(3, 'Prada Pouch', '69', '2.00', '5.00', 2, 0, '2021-04-04 18:48:53'),
+(4, 'Arcade Machine (Centipede Edition)', '1200', '780.00', '1069.00', 2, 0, '2021-04-04 19:03:23'),
+(5, 'Leather Purse', '26', '299.00', '494.00', 5, 0, '2021-04-04 19:11:30'),
+(6, 'PU Leather Sandal', '42', '280.00', '415.00', 5, 0, '2021-04-04 19:13:35'),
+(7, 'Outdoor Lighting', '107', '3.00', '7.00', 3, 0, '2021-04-04 19:15:38'),
+(8, 'Coway King Sized Bed', '110', '13.00', '20.00', 3, 0, '2021-04-04 19:17:11'),
+(9, 'Wrist Watch', '67', '29.00', '55.00', 3, 0, '2021-04-04 19:19:20'),
 (10, 'Hasbro Marvel Legends Series Toys', '106', '219.00', '322.00', 3, 0, '2021-04-04 19:20:28'),
 (11, 'Packing Chips', '78', '21.00', '31.00', 4, 0, '2021-04-04 19:25:22'),
 (12, 'Classic Desktop Tape Dispenser 38', '160', '5.00', '10.00', 8, 0, '2021-04-04 19:48:01'),
@@ -134,6 +134,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_level` int(11) NOT NULL,
   `image` varchar(255) DEFAULT 'no_image.jpg',
   `status` int(1) NOT NULL,
+  `code` varchar(50) NOT NULL,
   `last_login` datetime DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
@@ -141,12 +142,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`) VALUES
-(1, 'Harry Denn', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'no_image.png', 1, '2021-04-04 19:45:52'),
-(2, 'John Walker', 'special', 'ba36b97a41e7faf742ab09bf88405ac04f99599a', 2, 'no_image.png', 1, '2021-04-04 19:53:26'),
-(3, 'Christopher', 'user', '12dea96fec20593566ab75692c9949596833adc9', 3, 'no_image.png', 1, '2021-04-04 19:54:46'),
-(4, 'Natie Williams', 'natie', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 3, 'no_image.png', 1, NULL),
-(5, 'Kevin', 'kevin', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 3, 'no_image.png', 1, '2021-04-04 19:54:29');
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `code`, `last_login`) VALUES
+(1, 'Harry Denn', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'no_image.png', 1, 'Ax45KJK', '2021-04-04 19:45:52'),
+(2, 'John Walker', 'special', 'ba36b97a41e7faf742ab09bf88405ac04f99599a', 2, 'no_image.png', 1, 'NXv5K1K', '2021-04-04 19:53:26'),
+(3, 'Christopher', 'user', '12dea96fec20593566ab75692c9949596833adc9', 3, 'no_image.png', 1, 'Lx45HJK', '2021-04-04 19:54:46'),
+(4, 'Natie Williams', 'natie', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 3, 'no_image.png', 1, 'Nx45KJK', NULL),
+(5, 'Kevin', 'kevin', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 3, 'no_image.png', 1, 'Yv97KJK', '2021-04-04 19:54:29');
 
 -- --------------------------------------------------------
 

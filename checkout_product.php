@@ -10,6 +10,12 @@ include_once('checkout.style.php');
 $product = find_by_id('products', (int)$_GET['id']);
 $all_categories = find_all('categories');
 $all_photo = find_all('media');
+// $users = find_all('users'); 
+
+$form = [
+    'quantity' => 1,
+    'code' => ''
+];
 // if (!$product) {
 //     $session->msg("d", "Missing product id.");
 //     redirect('product.php');
@@ -48,7 +54,7 @@ $all_photo = find_all('media');
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-shopping-cart"></i>
                                         </span>
-                                        <input type="number" class="form-control" name="product-quantity" value="<?php echo remove_junk($product['quantity']); ?>">
+                                        <input type="number" class="form-control" name="product-quantity" value="<?php echo remove_junk($form['quantity']); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -59,20 +65,16 @@ $all_photo = find_all('media');
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-usd"></i>
                                         </span>
-                                        <input type="number" class="form-control" name="buying-price" value="<?php echo remove_junk($product['buy_price']); ?>">
+                                        <input type="number" disabled class="form-control" name="buying-price" value="<?php echo remove_junk($product['buy_price']); ?>">
                                         <span class="input-group-addon">.00</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="qty">Selling price</label>
+                                    <label for="qty">Referal Code</label>
                                     <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="glyphicon glyphicon-usd"></i>
-                                        </span>
-                                        <input type="number" class="form-control" name="saleing-price" value="<?php echo remove_junk($product['sale_price']); ?>">
-                                        <span class="input-group-addon">.00</span>
+                                        <input type="text" class="form-control" name="saleing-price" value="<?php echo remove_junk($form['code']); ?>">
                                     </div>
                                 </div>
                             </div>
