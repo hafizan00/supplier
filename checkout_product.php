@@ -14,12 +14,10 @@ $all_photo = find_all('media');
 
 $form = [
     'quantity' => 1,
+    'buy_price' => remove_junk($product['buy_price']),
     'code' => ''
 ];
-// if (!$product) {
-//     $session->msg("d", "Missing product id.");
-//     redirect('product.php');
-// }
+
 ?>
 <?php include_once('layouts/header.php'); ?>
 <div class="row">
@@ -40,11 +38,12 @@ $form = [
             <h1><?php echo remove_junk($product['name']); ?></h1>
             <h5>Rm<?php echo remove_junk($product['sale_price']); ?></h5>
             <p>Rm<?php echo remove_junk($product['buy_price']); ?></p>
+            <input type="text" hidden name="product_id" value="<?php echo remove_junk($product['id']); ?>">
         </div>
 
         <div class="panel-body">
             <div class="col-md-7">
-                <form method="post" action="checkout_product.php?id=<?php echo (int)$product['id'] ?>">
+                <form method="post" action="popular_products.php">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-4">
@@ -54,7 +53,7 @@ $form = [
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-shopping-cart"></i>
                                         </span>
-                                        <input type="number" class="form-control" name="product-quantity" value="<?php echo remove_junk($form['quantity']); ?>">
+                                        <input type="number" class="form-control" name="quantity" value="<?php echo remove_junk($form['quantity']); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +64,7 @@ $form = [
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-usd"></i>
                                         </span>
-                                        <input type="number" disabled class="form-control" name="buying-price" value="<?php echo remove_junk($product['buy_price']); ?>">
+                                        <input type="number" disabled class="form-control" name="buy_price" value="<?php echo remove_junk((int) $form['buy_price']); ?>">
                                         <span class="input-group-addon">.00</span>
                                     </div>
                                 </div>
@@ -74,13 +73,13 @@ $form = [
                                 <div class="form-group">
                                     <label for="qty">Referal Code</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="saleing-price" value="<?php echo remove_junk($form['code']); ?>">
+                                        <input type="text" class="form-control" name="code" value="<?php echo remove_junk($form['code']); ?>">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" name="product" class="btn btn-primary">Purchase</button>
+                    <button type="submit" name="purchase" class="btn btn-primary">Purchase</button>
                 </form>
             </div>
         </div>

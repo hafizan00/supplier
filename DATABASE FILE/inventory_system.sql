@@ -73,6 +73,22 @@ CREATE TABLE IF NOT EXISTS `products` (
   `date` datetime NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchases`
+--
+
+CREATE TABLE IF NOT EXISTS `purchases` (
+  `id` int(11) unsigned NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `product_id` varchar(255) NOT NULL,
+  `quantity` varchar(50) DEFAULT NULL,
+  `buy_price` decimal(25,2) DEFAULT NULL,
+  `code` varchar(50) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
 --
 -- Dumping data for table `products`
 --
@@ -194,6 +210,12 @@ ALTER TABLE `products`
  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`), ADD KEY `categorie_id` (`categorie_id`), ADD KEY `media_id` (`media_id`);
 
 --
+-- Indexes for table `purchases`
+--
+ALTER TABLE `purchases`
+ ADD PRIMARY KEY (`id`), ADD KEY `user_id` (`user_id`), ADD KEY `product_id` (`product_id`);
+
+--
 -- Indexes for table `sales`
 --
 ALTER TABLE `sales`
@@ -229,6 +251,11 @@ MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `purchases`
+--
+ALTER TABLE `purchases`
 MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `sales`
