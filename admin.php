@@ -21,7 +21,7 @@ $recent_sales    = find_recent_sale_added('5')
   <div class="wrapper">
     <main class="page-main ">
       <div>
-        <h1 style="color: black; font-size:40px; margin-right: 100px;" class="h1">Welcome To My Supplier</h1>
+        <h1 style="color: black; font-size:40px; margin-right: 100px;" class="h1">Affiliate marketing for student business portal</h1>
       </div>
     </main>
   </div>

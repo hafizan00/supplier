@@ -16,10 +16,10 @@
   <body>
   <?php  if ($session->isUserLoggedIn(true)): ?>
     <header id="header">
-    <div class="logo pull-left" style="background-color: grey;">MY Supplier </div>
+    <div class="logo pull-left" style="background-color: grey;">Affiliate marketing</div>
       <div class="header-content">
       <div class="header-date pull-left">
-       <p>MY Supplier Management System ~</p>
+       <p>Affiliate marketing for student business portal</p>
       </div>
       <div class="pull-right clearfix">
         <ul class="info-menu list-inline list-unstyled">
