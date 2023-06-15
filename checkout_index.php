@@ -27,7 +27,7 @@ $all_categories = find_all('categories');
 						<div id="product-<?php echo remove_junk($product['id']); ?>" class="single-product">
 							<div class="part-1">
 								<ul>
-									<li><a href="show_product.php?id=<?php echo remove_junk($product['id']); ?>"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+									<li><a href="checkout_product.php?id=<?php echo remove_junk($product['id']); ?>"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
 								</ul>
 							</div>
 							<div class="part-2">
