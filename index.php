@@ -80,7 +80,7 @@ if ($session->isUserLoggedIn(true)) {
 			<div class="overlay-panel overlay-right">
 				<h4>A Marketplace for entrepreneurs and affiliate amoung students</h4>
 				<p>Not member yet ?</p>
-				<button class="ghost" id="signUp">Join Now</button>
+				<a class="ghost button abc" id="signUp" href="register_join.php">Join Now</a>
 			</div>
 		</div>
 	</div>
@@ -140,6 +140,7 @@ if ($session->isUserLoggedIn(true)) {
 		font-size: 14px;
 		text-decoration: none;
 		margin: 15px 0;
+		
 	}
 
 	button {
@@ -164,6 +165,32 @@ if ($session->isUserLoggedIn(true)) {
 	}
 
 	button.ghost {
+		background-color: transparent;
+		border-color: #FFFFFF;
+	}
+
+	.abc {
+		border-radius: 20px;
+		border: 1px solid #FF4B2B;
+		background-color: #FF4B2B;
+		color: #FFFFFF;
+		font-size: 12px;
+		font-weight: bold;
+		padding: 12px 45px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		transition: transform 80ms ease-in;
+	}
+
+	.abc:active {
+		transform: scale(0.95);
+	}
+
+	.abc:focus {
+		outline: none;
+	}
+
+	.abc.ghost {
 		background-color: transparent;
 		border-color: #FFFFFF;
 	}
