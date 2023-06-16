@@ -191,7 +191,9 @@ CREATE TABLE IF NOT EXISTS `user_groups` (
 INSERT INTO `user_groups` (`id`, `group_name`, `group_level`, `group_status`) VALUES
 (1, 'Admin', 1, 1),
 (2, 'special', 2, 1),
-(3, 'User', 3, 1);
+(3, 'User', 3, 1),
+(4, 'Affiliate', 4, 1),
+(5, 'Entrepreneur', 5, 1);
 
 --
 -- Indexes for dumped tables

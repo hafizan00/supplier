@@ -5,15 +5,40 @@ require_once('includes/load.php');
 
 <?php
 if (isset($_POST['affiliate'])) {
-    $req_fields = array(
+
+    validate_fields(array(
         'name', 'email', 'phone', 'password',
-        'instagram', 'twitter', 'facebook',
-        'other'
-    );
-    validate_fields($req_fields);
+        // 'instagram', 'twitter', 'facebook', 'other'
+    ));
 
     if (empty($errors)) {
-        redirect('index.php', false);
+        $name   = remove_junk($db->escape($_POST['name']));
+        $username   = remove_junk($db->escape($_POST['email']));
+        $email   = remove_junk($db->escape($_POST['email']));
+        $phone   = remove_junk($db->escape($_POST['phone']));
+        $password   = sha1(remove_junk($db->escape($_POST['password'])));
+        $user_level = (int) 4; // Affiliate category
+        $instagram   = remove_junk($db->escape($_POST['instagram']));
+        $twitter   = remove_junk($db->escape($_POST['twitter']));
+        $facebook   = remove_junk($db->escape($_POST['facebook']));
+        $other   = remove_junk($db->escape($_POST['other']));
+        $code = (string) randString(7);
+        $query = "INSERT INTO users (";
+        $query .= "name,username,email,phone,password,user_level,";
+        $query .= "image,status,code,instagram,twitter,facebook,other";
+        $query .= ") VALUES (";
+        $query .= " '{$name}', '{$username}', '{$email}', '{$phone}', '{$password}', '{$user_level}',";
+        $query .= " 'no_image.png','1','{$code}','{$instagram}','{$twitter}','{$facebook}','{$other}'";
+        $query .= ")";
+        if ($db->query($query)) {
+            //sucess
+            $session->msg('s', "User account has been created! ");
+            redirect('index.php', false);
+        } else {
+            //failed
+            $session->msg('d', ' Sorry failed to create account!');
+            redirect('affiliate_login.php', false);
+        }
     } else {
         $session->msg("d", $errors);
         redirect('affiliate_login.php', false);
