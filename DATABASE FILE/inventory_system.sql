@@ -146,11 +146,17 @@ CREATE TABLE IF NOT EXISTS `users` (
 `id` int(11) unsigned NOT NULL,
   `name` varchar(60) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `user_level` int(11) NOT NULL,
   `image` varchar(255) DEFAULT 'no_image.jpg',
   `status` int(1) NOT NULL,
   `code` varchar(50) NOT NULL,
+  `instagram` varchar(255) DEFAULT NULL,
+  `twitter` varchar(255) DEFAULT NULL,
+  `facebook` varchar(255) DEFAULT NULL,
+  `other` varchar(255) DEFAULT NULL,
   `last_login` datetime DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
