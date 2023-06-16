@@ -3,6 +3,8 @@ $page_title = 'Home Page';
 require_once('includes/load.php');
 if (!$session->isUserLoggedIn(true)) {
   redirect('index.php', false);
+} else {
+  redirect('popular_products.php', false);
 }
 ?>
 <?php include_once('layouts/header.php'); ?>
