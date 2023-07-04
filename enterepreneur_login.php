@@ -4,16 +4,44 @@ require_once('includes/load.php');
 ?>
 
 <?php
-if (isset($_POST['enterepreneur`'])) {
+if (isset($_POST['enterepreneur'])) {
+
     $req_fields = array(
         'name', 'email', 'phone', 'password',
         'instagram', 'twitter', 'facebook',
         'other'
     );
+
     validate_fields($req_fields);
 
     if (empty($errors)) {
-        redirect('index.php', false);
+        $name   = remove_junk($db->escape($_POST['name']));
+        $username   = remove_junk($db->escape($_POST['email']));
+        $email   = remove_junk($db->escape($_POST['email']));
+        $phone   = remove_junk($db->escape($_POST['phone']));
+        $password   = sha1(remove_junk($db->escape($_POST['password'])));
+        $user_level = (int) 5; // Entrepreneur category
+        $instagram   = remove_junk($db->escape($_POST['instagram']));
+        $twitter   = remove_junk($db->escape($_POST['twitter']));
+        $facebook   = remove_junk($db->escape($_POST['facebook']));
+        $other   = remove_junk($db->escape($_POST['other']));
+        $code = (string) randString(7);
+        $query = "INSERT INTO users (";
+        $query .= "name,username,email,phone,password,user_level,";
+        $query .= "image,status,code,instagram,twitter,facebook,other";
+        $query .= ") VALUES (";
+        $query .= " '{$name}', '{$username}', '{$email}', '{$phone}', '{$password}', '{$user_level}',";
+        $query .= " 'no_image.png','1','{$code}','{$instagram}','{$twitter}','{$facebook}','{$other}'";
+        $query .= ")";
+        if ($db->query($query)) {
+            //sucess
+            $session->msg('s', "User account has been created! ");
+            redirect('index.php', false);
+        } else {
+            //failed
+            $session->msg('d', ' Sorry failed to create account!');
+            redirect('enterepreneur_login.php', false);
+        }
     } else {
         $session->msg("d", $errors);
         redirect('enterepreneur_login.php', false);
@@ -45,54 +73,54 @@ if (isset($_POST['enterepreneur`'])) {
 
 
         <div class="card">
-        <form class="clearfix" method="post" action="enterepreneur_login.php">
+            <form class="clearfix" method="post" action="enterepreneur_login.php">
 
-            <div class="card-body">
-                <div class="row text-center">
-                    <div class="col">
-                        <h4 class="mb-3">Information Details</h4>
-                        <div class="">
-                            <label for="name" class="form-label"></label>
-                            <input type="name" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Name">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col">
+                            <h4 class="mb-3">Information Details</h4>
+                            <div class="">
+                                <label for="name" class="form-label"></label>
+                                <input type="name" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Name">
+                            </div>
+                            <div class="">
+                                <label for="email" class="form-label"></label>
+                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Email">
+                            </div>
+                            <div class="">
+                                <label for="phone" class="form-label"></label>
+                                <input type="phone" class="form-control" id="phone" name="phone" aria-describedby="emailHelp" placeholder="Phone Number">
+                            </div>
+                            <div class="">
+                                <label for="password" class="form-label"></label>
+                                <input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h4 class="mb-3">Social Media Link</h4>
+                            <div class="">
+                                <label for="instagram" class="form-label"></label>
+                                <input type="instagram" class="form-control" id="instagram" name="instagram" aria-describedby="emailHelp" placeholder="Instagram">
+                            </div>
+                            <div class="">
+                                <label for="twitter" class="form-label"></label>
+                                <input type="twitter" class="form-control" id="twitter" name="twitter" aria-describedby="emailHelp" placeholder="Twitter">
+                            </div>
+                            <div class="">
+                                <label for="facebook" class="form-label"></label>
+                                <input type="facebook" class="form-control" id="facebook" name="facebook" aria-describedby="emailHelp" placeholder="Facebook">
+                            </div>
+                            <div class="">
+                                <label for="other" class="form-label"></label>
+                                <input type="other" class="form-control" id="other" name="other" aria-describedby="emailHelp" placeholder="Other">
+                            </div>
                         </div>
                         <div class="">
-                            <label for="email" class="form-label"></label>
-                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Email">
+                            <button type="submit" name="enterepreneur" class="btn btn-info text-white mt-4">Join as an entrepreneur</button>
                         </div>
-                        <div class="">
-                            <label for="phone" class="form-label"></label>
-                            <input type="phone" class="form-control" id="phone" name="phone" aria-describedby="emailHelp" placeholder="Phone Number">
-                        </div>
-                        <div class="">
-                            <label for="password" class="form-label"></label>
-                            <input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <h4 class="mb-3">Social Media Link</h4>
-                        <div class="">
-                            <label for="instagram" class="form-label"></label>
-                            <input type="instagram" class="form-control" id="instagram" name="instagram" aria-describedby="emailHelp" placeholder="Instagram">
-                        </div>
-                        <div class="">
-                            <label for="twitter" class="form-label"></label>
-                            <input type="twitter" class="form-control" id="twitter" name="twitter" aria-describedby="emailHelp" placeholder="Twitter">
-                        </div>
-                        <div class="">
-                            <label for="facebook" class="form-label"></label>
-                            <input type="facebook" class="form-control" id="facebook" name="facebook" aria-describedby="emailHelp" placeholder="Facebook">
-                        </div>
-                        <div class="">
-                            <label for="other" class="form-label"></label>
-                            <input type="other" class="form-control" id="other" name="other" aria-describedby="emailHelp" placeholder="Other">
-                        </div>
-                    </div>
-                    <div class="">
-                        <button type="button" name="enterepreneur" class="btn btn-info text-white mt-4">Join as an entrepreneur</button>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
         </div>
     </div>
 </body>
