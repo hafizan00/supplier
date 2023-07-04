@@ -31,7 +31,7 @@
        <li><a href="add_product.php">Add Products</a> </li>
    </ul>
   </li>
-  <li>
+  <!-- <li>
     <a href="media.php" >
       <i class="glyphicon glyphicon-picture"></i>
       <span>Media Files</span>
@@ -57,5 +57,5 @@
       <i class="glyphicon glyphicon-th-list"></i>
       <span>Checkout</span>
     </a>
-  </li>
+  </li> -->
 </ul>
